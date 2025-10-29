@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme inline {
+  --default-font-family: "Geist", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* custom zinc pallette adjustments */
+  --zinc-50: #fafafa;
+  --zinc-100: #f4f4f5;
+  --zinc-200: #e4e4e7;
+  --zinc-300: #d4d4d8;
+  --zinc-400: #a1a1aa;
+  --zinc-500: #52525b;
+  --zinc-600: #3f3f46;
+  --zinc-700: #27272a;
+  --zinc-800: #18181b;
+  --zinc-900: #131316;
+  --zinc-950: #0f0f11;
+}
+
+@layer base {
+  body {
+    @apply bg-zinc-950 text-zinc-100 antialiased;
+  }
+}
