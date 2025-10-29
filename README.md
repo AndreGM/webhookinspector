@@ -1,6 +1,6 @@
 # Webhook Inspector
 
-A full-stack application for inspecting and debugging webhooks. This tool allows you to capture, store, and analyze incoming webhook requests with detailed information about headers, body, and metadata.
+A full-stack application for inspecting and debugging webhooks in real-time. This tool provides a clean, modern interface to capture, store, and analyze incoming webhook requests with detailed information about headers, body, query parameters, and metadata.
 
 ## 🏗️ Project Structure
 
@@ -9,16 +9,20 @@ This is a monorepo managed with **pnpm workspaces** containing two main packages
 ```
 webhookinspector/
 ├── api/          # Backend API (Fastify + PostgreSQL)
-└── web/          # Frontend (React + Vite)
+└── web/          # Frontend UI (React + TanStack Router + Tailwind CSS)
 ```
 
 ## ✨ Features
 
-- **Webhook Capture**: Capture incoming webhook requests with full details
+- **Real-time Webhook Capture**: Capture incoming webhook requests with full details
+- **Interactive UI**: Modern, responsive interface with resizable panels
 - **Request Inspection**: View method, path, headers, body, query parameters, and IP address
+- **Syntax Highlighting**: Beautiful code display with Shiki syntax highlighter
 - **Database Storage**: Persist webhook data using PostgreSQL with Drizzle ORM
 - **API Documentation**: Interactive API docs powered by Scalar
 - **Type Safety**: Full TypeScript support across the stack
+- **Dark Theme**: Eye-friendly dark UI with Zinc color palette
+- **Copy to Clipboard**: Quick copy of webhook URLs
 - **Modern Stack**: Built with latest technologies and best practices
 
 ## 🛠️ Tech Stack
@@ -35,6 +39,13 @@ webhookinspector/
 ### Frontend (Web)
 - **Framework**: React 19
 - **Build Tool**: Vite 7
+- **Routing**: TanStack Router - Type-safe routing with devtools
+- **Styling**: Tailwind CSS 4 - Utility-first CSS framework
+- **UI Components**: Radix UI primitives (Checkbox, etc.)
+- **Icons**: Lucide React - Beautiful icon library
+- **Syntax Highlighting**: Shiki - High-quality code highlighting
+- **Layout**: React Resizable Panels - Flexible, resizable layouts
+- **Code Quality**: Biome - Fast formatter and linter
 - **Language**: TypeScript
 
 ## 📋 Prerequisites
@@ -105,11 +116,15 @@ The web app will be available at `http://localhost:5173` (default Vite port)
 ## 📚 API Endpoints
 
 ### Health Check
+- `GET /` - Root endpoint
 - `GET /health` - Check API health status
 
 ### Webhooks
 - `GET /api/webhooks` - List all captured webhooks
   - Query params: `limit` (optional, default: 20, max: 100)
+
+### Webhook Capture
+The application is designed to capture webhooks at `/api/capture` endpoint (displayed in the UI sidebar).
 
 ## 🗄️ Database Schema
 
@@ -152,7 +167,32 @@ pnpm db:studio       # Open Drizzle Studio (database GUI)
 pnpm dev             # Start Vite development server
 pnpm build           # Build for production
 pnpm preview         # Preview production build
+pnpm format          # Format code with Biome
 ```
+
+## 🎨 UI Components
+
+The web application includes several custom components:
+
+### Layout Components
+- **Sidebar**: Navigation panel with webhook list and URL display
+- **WebhooksDetailHeader**: Header for the webhook detail view
+- **WebhooksList**: Scrollable list of captured webhooks
+- **WebhooksListItem**: Individual webhook item in the list
+
+### Utility Components
+- **SectionTitle**: Styled section headers
+- **SectionDataTable**: Key-value data table display
+- **CodeBlock**: Syntax-highlighted code viewer (powered by Shiki)
+- **IconButton**: Reusable icon button component
+- **Badge**: Status and category badges
+- **Checkbox**: Custom checkbox component (Radix UI)
+
+### UI Features
+- **Resizable Panels**: Drag to resize sidebar and main content area
+- **Dark Theme**: Professional dark color scheme using Zinc palette
+- **Responsive Layout**: Adapts to different screen sizes
+- **TanStack Router Devtools**: Integrated routing inspector (development mode)
 
 ## 🐳 Docker
 
@@ -189,6 +229,21 @@ services:
 - **Drizzle ORM** for database operations with snake_case mapping
 - **UUIDv7** for unique, time-sortable identifiers
 - **CORS** enabled for cross-origin requests
+
+### Frontend Architecture
+- **TanStack Router** for file-based, type-safe routing
+- **React 19** with StrictMode enabled
+- **Tailwind CSS 4** with custom Zinc color theme
+- **Component-based architecture** with reusable UI components
+- **Shiki** for server-side syntax highlighting (Vesper theme)
+- **React Resizable Panels** for flexible, draggable layouts
+
+### UI Design Patterns
+- **Panel Layout**: Resizable sidebar and main content area
+- **Component Composition**: Modular, reusable components
+- **Dark Theme**: Consistent Zinc color palette
+- **Type-safe routing**: Generated route tree with TypeScript
+- **Real-time Updates**: Ready for WebSocket integration
 
 ### Database
 - PostgreSQL with JSONB support for flexible data storage
