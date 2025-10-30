@@ -218,7 +218,7 @@ pnpm dev
 ```
 The web app will be available at `http://localhost:5173` (default Vite port)
 
-## � Usage Examples
+##  Usage Examples
 
 ### Capturing Webhooks
 
@@ -633,6 +633,13 @@ A complete Docker setup for production deployment could include:
 - **Automated migrations** with version tracking
 - **Seeding support** with Faker.js for realistic test data
 
+## 📁 Project Structure Details
+
+### Backend (`api/`)
+
+```
+api/
+
 ## � Project Structure Details
 
 ### Backend (`api/`)
@@ -977,48 +984,6 @@ A: Absolutely! This project demonstrates best practices for building full-stack 
 
 **Q: How do I contribute?**  
 A: Check the [Contributing](#-contributing) section for detailed guidelines.
-
-## 🚀 Future Enhancements
-
-Potential features and improvements:
-
-### Core Features
-- [ ] **WebSocket support** for real-time webhook updates in UI
-- [ ] **Search and filter** webhooks by method, path, date, etc.
-- [ ] **Request replay** - Resend captured webhooks
-- [ ] **Webhook forwarding** - Forward to external URLs
-- [ ] **Request diff** - Compare two webhook requests
-- [ ] **Batch operations** - Delete multiple webhooks at once
-
-### UI/UX Improvements
-- [ ] **Pagination controls** in UI with infinite scroll
-- [ ] **Dark/Light theme toggle**
-- [ ] **Webhook grouping** by pathname or method
-- [ ] **Export webhooks** to JSON/CSV
-- [ ] **Request statistics** - Charts and analytics
-- [ ] **Keyboard shortcuts** for navigation
-
-### Backend Enhancements
-- [ ] **Rate limiting** to prevent abuse
-- [ ] **Authentication** for API endpoints
-- [ ] **Webhook retention policies** - Auto-delete old webhooks
-- [ ] **Request size limits** - Prevent huge payloads
-- [ ] **Custom response codes** - Configure webhook capture responses
-- [ ] **Request validation** - Validate webhook structure
-
-### DevOps
-- [ ] **Docker Compose** for full stack
-- [ ] **CI/CD pipeline** with GitHub Actions
-- [ ] **Health checks** with detailed status
-- [ ] **Logging** with structured logs (Winston/Pino)
-- [ ] **Monitoring** with Prometheus/Grafana
-- [ ] **E2E tests** with Playwright
-
-### Developer Experience
-- [ ] **API client library** for common languages
-- [ ] **CLI tool** for managing webhooks
-- [ ] **Browser extension** for quick webhook capture
-- [ ] **Mock server mode** - Return custom responses
 
 ## 🤝 Contributing
 
