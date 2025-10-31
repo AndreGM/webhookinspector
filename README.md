@@ -640,11 +640,11 @@ A complete Docker setup for production deployment could include:
 ```
 api/
 
-## � Project Structure Details
+## Project Structure Details
 
 ### Backend (`api/`)
 
-```
+
 api/
 ├── src/
 │   ├── server.ts              # Fastify app setup, plugins, and routes registration

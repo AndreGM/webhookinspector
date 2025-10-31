@@ -2,7 +2,8 @@ import { Suspense, useEffect, useReducer, useRef } from "react";
 import { webhookListSchema } from "../http/schemas/webhooks";
 import { WebhookListItem } from "./webhooks-list-item";
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
+import { CopyIcon, Loader2 } from "lucide-react";
+import { IconButton } from "./ui/icon-button";
 export function WebhookList() {
 	const loadMoreRef = useRef<HTMLDivElement>(null);
 	const observerRef = useRef<IntersectionObserver>(null);
@@ -52,21 +53,24 @@ export function WebhookList() {
 	}, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
 	return (
-		<div className="flex-1 overflow-y-auto">
-			<div className="space-y-1 p-2">
-				{webhooks.map((webhook) => (
-					<WebhookListItem key={webhook.id} webhook={webhook} />
-				))}
-			</div>
-			{hasNextPage && (
-				<div className="p-2" ref={loadMoreRef}>
-					{isFetchingNextPage && (
-						<div className="flex items-center justify-center p-2">
-							<Loader2 className="size-5 animate-spin text-zinc-400" />
-						</div>
-					)}
+		<>
+			<div className="flex-1 overflow-y-auto">
+				<div className="space-y-1 p-2">
+					{webhooks.map((webhook) => (
+						<WebhookListItem key={webhook.id} webhook={webhook} />
+					))}
 				</div>
-			)}
-		</div>
+				{hasNextPage && (
+					<div className="p-2" ref={loadMoreRef}>
+						{isFetchingNextPage && (
+							<div className="flex items-center justify-center p-2">
+								<Loader2 className="size-5 animate-spin text-zinc-400" />
+							</div>
+						)}
+					</div>
+				)}
+			</div>
+			<IconButton className="w-full" icon={<CopyIcon className="size-4" />} />
+		</>
 	);
 }
